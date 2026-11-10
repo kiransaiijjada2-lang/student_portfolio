@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScholarSpace — Student Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Login screen -->
+  <main id="loginScreen" class="login-screen">
+    <section class="login-card">
+      <a class="brand login-brand" href="#" aria-label="ScholarSpace home">
+        <span class="brand-mark">S</span>
+        <span>ScholarSpace</span>
+      </a>
+
+      <div class="login-heading">
+        <span class="eyebrow">YOUR LEARNING, SHOWCASED</span>
+        <h1>Welcome back.</h1>
+        <p>Sign in to continue building your portfolio.</p>
+      </div>
+
+      <form id="loginForm" class="login-form">
+        <label for="email">Email address</label>
+        <input id="email" type="email" placeholder="you@example.com" required>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="Enter any password" required>
+
+        <button class="button button-primary login-button" type="submit">Sign in <span>→</span></button>
+      </form>
+      <p class="demo-note">Demo mode: use any email and password.</p>
+    </section>
+    <aside class="login-art">
+      <div class="art-orbit orbit-one"></div>
+      <div class="art-orbit orbit-two"></div>
+      <div class="art-content">
+        <div class="art-icon">✦</div>
+        <p class="art-quote">“The beautiful thing about learning is that nobody can take it away from you.”</p>
+        <span class="art-credit">— B.B. King</span>
+        <div class="art-dots"><i></i><i></i><i></i></div>
+      </div>
+      <span class="art-footer">A space for everything you’re becoming.</span>
+    </aside>
+  </main>
+
+  <!-- Portfolio dashboard -->
+  <div id="app" class="app-shell hidden">
+    <aside class="sidebar">
+      <a class="brand" href="#">
+        <span class="brand-mark">S</span>
+        <span>ScholarSpace</span>
+      </a>
+
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-view="overview"><span class="nav-icon">▦</span> Overview</button>
+        <button class="nav-link" data-view="projects"><span class="nav-icon">▣</span> My projects <span class="nav-count" id="projectCount">0</span></button>
+        <button class="nav-link" data-view="achievements"><span class="nav-icon">✧</span> Achievements</button>
+        <button class="nav-link" data-view="profile"><span class="nav-icon">◎</span> My profile</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="upgrade-card">
+          <div class="upgrade-sparkle">✦</div>
+          <strong>Your story matters.</strong>
+          <p>Keep adding work to show how far you’ve come.</p>
+          <button id="sidebarAddProject" class="upgrade-link">Add a project <span>→</span></button>
+        </div>
+        <div class="sidebar-user">
+          <div class="avatar avatar-small">JD</div>
+          <div class="user-meta"><strong id="sidebarName">Jordan Davis</strong><span>Student account</span></div>
+          <button id="logoutButton" class="logout-button" title="Sign out" aria-label="Sign out">↪</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="breadcrumb">Portfolio <span>/</span> <strong id="breadcrumbPage">Overview</strong></div>
+        <div class="topbar-actions">
+          <span id="todayLabel" class="date-label"></span>
+          <button class="avatar avatar-top" id="topAvatar" aria-label="Open profile">JD</button>
+        </div>
+      </header>
+
+      <section class="page-content">
+        <div class="welcome-row">
+          <div>
+            <span class="eyebrow">YOUR PERSONAL SPACE</span>
+            <h1 id="welcomeTitle">Good morning, Jordan <span class="wave">✦</span></h1>
+            <p class="welcome-subtitle">A little progress each day adds up to big results.</p>
+          </div>
+          <button id="addProjectButton" class="button button-primary"><span class="plus">＋</span> Add project</button>
+        </div>
+
+        <section id="overviewView">
+          <div class="stats-grid">
+            <article class="stat-card">
+              <div class="stat-icon purple">▣</div><span class="stat-label">Total projects</span>
+              <strong id="statProjects">0</strong><small>Pieces of work in your portfolio</small>
+            </article>
+            <article class="stat-card">
+              <div class="stat-icon mint">✧</div><span class="stat-label">Achievements</span>
+              <strong id="statAchievements">3</strong><small>Milestones worth celebrating</small>
+            </article>
+            <article class="stat-card">
+              <div class="stat-icon peach">◷</div><span class="stat-label">Learning streak</span>
+              <strong>5 <em>days</em></strong><small>You’re building a great habit</small>
+            </article>
+            <article class="stat-card">
+              <div class="stat-icon blue">↗</div><span class="stat-label">Portfolio views</span>
+              <strong>128</strong><small><span class="positive">↑ 12%</span> this month</small>
+            </article>
+          </div>
+
+          <div class="section-heading">
+            <div><h2>Recent projects</h2><p>Your latest work, all in one place.</p></div>
+            <button class="text-button" data-go="projects">View all projects <span>→</span></button>
+          </div>
+          <div id="projectGrid" class="project-grid"></div>
+
+          <div class="lower-grid">
+            <section class="panel activity-panel">
+              <div class="panel-heading"><div><h2>Recent activity</h2><p>Small steps, meaningful progress.</p></div><span class="activity-badge">THIS WEEK</span></div>
+              <div class="activity-list" id="activityList"></div>
+            </section>
+            <section class="panel tip-panel">
+              <div class="tip-art"><span>✦</span><i></i><b></b></div>
+              <span class="eyebrow">PORTFOLIO TIP</span>
+              <h2>Show your process,<br>not just the result.</h2>
+              <p>A short reflection on what you learned can make any project more meaningful.</p>
+              <button id="tipAddButton" class="text-button">Add a reflection <span>→</span></button>
+            </section>
+          </div>
+        </section>
+
+        <section id="projectsView" class="subpage hidden">
+          <div class="section-heading"><div><h2>My projects</h2><p>Everything you’ve created and learned.</p></div></div>
+          <div id="allProjectGrid" class="project-grid"></div>
+        </section>
+
+        <section id="achievementsView" class="subpage hidden">
+          <div class="section-heading"><div><h2>Achievements</h2><p>Celebrate the milestones along your learning journey.</p></div></div>
+          <div class="achievement-grid">
+            <article class="achievement-card"><span class="achievement-symbol gold">✦</span><div><span class="achievement-date">OCTOBER 2026</span><h3>Curiosity in action</h3><p>Completed your first portfolio project.</p></div></article>
+            <article class="achievement-card"><span class="achievement-symbol green">↗</span><div><span class="achievement-date">OCTOBER 2026</span><h3>Learning streak</h3><p>Spent five days learning something new.</p></div></article>
+            <article class="achievement-card"><span class="achievement-symbol pink">✧</span><div><span class="achievement-date">SEPTEMBER 2026</span><h3>Creative thinker</h3><p>Shared an original idea with your class.</p></div></article>
+          </div>
+        </section>
+
+        <section id="profileView" class="subpage hidden">
+          <div class="section-heading"><div><h2>My profile</h2><p>Tell people a little about yourself.</p></div></div>
+          <form id="profileForm" class="panel profile-form">
+            <div class="profile-avatar-wrap"><div class="avatar avatar-profile" id="profileAvatar">JD</div><div><strong>Your profile</strong><p>This information appears on your portfolio.</p></div></div>
+            <label for="profileName">Your name</label><input id="profileName" type="text" value="Jordan Davis" required>
+            <label for="profileRole">A short headline</label><input id="profileRole" type="text" value="Curious student & creative thinker">
+            <label for="profileBio">About you</label><textarea id="profileBio" rows="4">I love exploring new ideas, building things, and learning how the world works.</textarea>
+            <button class="button button-primary" type="submit">Save profile</button>
+          </form>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <!-- Create project modal -->
+  <div id="projectModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <form id="projectForm" class="modal-card">
+      <button type="button" id="closeModal" class="modal-close" aria-label="Close">×</button>
+      <span class="eyebrow">ADD TO YOUR STORY</span>
+      <h2 id="modalTitle">Create a project</h2>
+      <p class="modal-description">Share something you’ve worked on or learned.</p>
+      <label for="projectTitle">Project title</label><input id="projectTitle" type="text" placeholder="e.g. The solar system" required maxlength="60">
+      <label for="projectSubject">Subject</label>
+      <select id="projectSubject"><option>Science</option><option>Math</option><option>Technology</option><option>Art & Design</option><option>Writing</option><option>Other</option></select>
+      <label for="projectDescription">Description</label><textarea id="projectDescription" rows="3" placeholder="What did you make or discover?" required maxlength="220"></textarea>
+      <div class="modal-actions"><button type="button" id="cancelModal" class="button button-quiet">Cancel</button><button type="submit" class="button button-primary">Save project <span>→</span></button></div>
+    </form>
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
